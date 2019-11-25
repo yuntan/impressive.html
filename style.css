@@ -1,0 +1,76 @@
+/* BEGIN preamble */
+/* for Japanese: import Noto Sans JP */
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap);
+
+@media screen {
+  body {
+    background: #eee;
+  }
+
+  section {
+    background: white;
+    box-shadow: 0 .5mm 2mm rgba(0, 0, 0, .3);
+    margin: 5mm;
+  }
+}
+
+@media print {
+  @page {
+    size: 254mm 190.5mm;
+    margin: 0;
+  }
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  counter-reset: sheet;
+}
+
+section {
+  position: relative;
+  /* 4:3 */
+  width: 254mm;
+  height: 190.5mm;
+  padding: 10mm;
+  page-break-after: always;
+}
+
+section::after {
+  position: absolute;
+  bottom: 10mm;
+  right: 10mm;
+  counter-increment: sheet;
+  content: counter(sheet);
+}
+/* END preamble */
+
+/* Style yourself */
+html {
+  font-size: 16px;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+/* BEGIN article */
+h1 {
+  font-weight: 400; /* normal */
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-weight: 400;
+  font-size: 1.2rem;
+}
+
+p {
+  margin-left: 10mm;
+  max-width: 165mm;
+  font-weight: 300; /* light */
+}
+
+ul li {
+  list-style-type: none;
+}
+/* END article */
