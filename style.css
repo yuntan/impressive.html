@@ -1,40 +1,60 @@
 /* BEGIN preamble */
-/* for Japanese: import Noto Sans JP */
-@import url(https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap);
-
-@media screen {
-  body {
-    background: #eee;
-  }
-
-  section {
-    background: white;
-    box-shadow: 0 .5mm 2mm rgba(0, 0, 0, .3);
-    margin: 5mm;
-  }
+@page {
+  size: 254mm 190.5mm;
+  margin: 0;
 }
 
 @media print {
-  @page {
-    size: 254mm 190.5mm;
+  body {
+    width: 254mm;
+    margin: 0;
+  }
+
+  body::before {
+    content: unset;
+  }
+
+  section {
     margin: 0;
   }
 }
+
+/* for Japanese: import M PLUS 1p (with weights light (300), regular (400), bold (700)) */
+@import url(https://fonts.googleapis.com/css?family=M+PLUS+1p:300,400,700&display=swap&subset=japanese);
 
 *, *:before, *:after {
   box-sizing: border-box;
 }
 
+html {
+  line-height: 1.5;
+}
+
 body {
+  background: #eee;
+  margin: 5mm;
   counter-reset: sheet;
 }
 
+body::before {
+  content: "▶  Press 's' to start presentation";
+  color: #333;
+  font-size: 24px;
+}
+
+body.deck::before {
+  content: unset;
+}
+
 section {
+  background: white;
+  box-shadow: 0 .5mm 2mm rgba(0, 0, 0, .3);
+  margin: 5mm 0;
   position: relative;
   /* 4:3 */
   width: 254mm;
   height: 190.5mm;
-  padding: 10mm;
+  padding: 10mm 20mm;
   page-break-after: always;
 }
 
@@ -45,32 +65,106 @@ section::after {
   counter-increment: sheet;
   content: counter(sheet);
 }
-/* END preamble */
 
-/* Style yourself */
-html {
-  font-size: 16px;
-  font-family: 'Noto Sans JP', sans-serif;
+h1 {
+  font-weight: normal;
+  font-size: 1.5rem;
+  margin: 0;
+  margin-top: 36px;
 }
 
-/* BEGIN article */
-h1 {
-  font-weight: 400; /* normal */
-  font-size: 1.5rem;
+h1:first-child {
+  margin-top: 0;
 }
 
 h2 {
-  font-weight: 400;
+  font-weight: normal;
   font-size: 1.2rem;
 }
 
 p {
-  margin-left: 10mm;
-  max-width: 165mm;
-  font-weight: 300; /* light */
+  margin: 0;
+  margin-top: 24px;
+  margin-left: 30px;
+  line-height: 1.75;
 }
 
-ul li {
-  list-style-type: none;
+ul, ol {
+  margin: 0;
+  margin-top: 24px;
 }
-/* END article */
+
+li {
+  margin: 0;
+  margin-bottom: 18px;
+}
+
+span {
+  display: inline-block;
+}
+
+em {
+  font-style: normal;
+  font-weight: bold;
+  color: var(--em-color);
+}
+
+.frame {
+  box-shadow: 0 .5mm 2mm rgba(0, 0, 0, .3);
+}
+
+figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  margin-top: 24px;
+}
+
+figcaption {
+  margin: 0;
+  margin-top: 6px;
+}
+
+pre {
+  line-height: 1.2;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.row>* {
+  margin-left: 24px;
+}
+
+.row>*:first-child {
+  margin-left: 0;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.title h1 {
+  font-size: 2rem;
+}
+/* END preamble */
+
+/* Style yourself */
+html {
+  font-size: 24px; /* = 1 rem */
+  font-weight: 300; /* light */
+  font-family: 'M PLUS 1p', sans-serif;
+}
+
+:root {
+  --em-color: #4472c4;
+}
