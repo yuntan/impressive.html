@@ -1,0 +1,27 @@
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 18px;
+  }
+
+  body {
+    background: unset;
+    margin: 0;
+  }
+
+  body::before {
+    content: unset;
+  }
+
+  section {
+    width: unset;
+    height: unset;
+    margin: 0;
+    padding: 6px;
+    box-shadow: unset;
+    border-bottom: solid 3px #333;
+  }
+
+  section::after {
+    content: unset;
+  }
+}

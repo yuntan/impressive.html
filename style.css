@@ -109,8 +109,8 @@ em {
   color: var(--em-color);
 }
 
-.frame {
-  box-shadow: 0 .5mm 2mm rgba(0, 0, 0, .3);
+img {
+  max-width: 100%;
 }
 
 figure {
@@ -119,6 +119,7 @@ figure {
   align-items: center;
   margin: 0;
   margin-top: 24px;
+  max-width: 100%;
 }
 
 figcaption {
@@ -128,6 +129,10 @@ figcaption {
 
 pre {
   line-height: 1.2;
+}
+
+.frame {
+  box-shadow: 0 .5mm 2mm rgba(0, 0, 0, .3);
 }
 
 .row {
