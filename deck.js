@@ -42,8 +42,8 @@
     render();
   }
 
-  function enter() {
-    document.body.classList.add("deck");
+  function enterDeckMode() {
+    document.body.classList.add('deck');
 
     document.body.addEventListener('keydown', (ev) => {
       switch (ev.key) {
@@ -53,14 +53,22 @@
       case 'ArrowRight':
         flip('next');
         break;
+      default:
+        return;
+        break;
       }
-      return false;
+
+      ev.stopPropagation();
+      ev.preventDefault();
     });
 
     document.body.addEventListener('wheel', (ev) => {
       if (ev.deltaY > 0) flip('next');
-      else flip('prev');
-      return false;
+      else if (ev.deltaY < 0) flip('prev');
+      else return;
+
+      ev.stopPropagation();
+      ev.preventDefault();
     });
 
     render();
@@ -68,8 +76,10 @@
 
   window.addEventListener('load', () => {
     document.body.addEventListener('keydown', (ev) => {
-      if (ev.key === 's') enter();
-      return false;
+      if (ev.key === 's') {
+        enterDeckMode();
+        ev.stopPropagation();
+      }
     });
   });
 })();
