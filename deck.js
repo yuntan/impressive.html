@@ -9,16 +9,14 @@
     const sections = document.querySelectorAll('section');
     const totalPages = sections.length;
 
-    document.body.style.margin = `0`;
-    document.body.style.background = '#000'
-
     for (const section of sections) {
       section.style.display = 'none';
     }
 
     const section = sections[state.page];
+    section.dataset.sheet = `${state.page + 1}`;
     section.style.display = null;
-    section.style['box-shadow'] = 'unset';
+
     const scale = Math.min(window.innerWidth / section.clientWidth,
                            window.innerHeight / section.clientHeight);
     section.style.transform = `scale(${scale})`;

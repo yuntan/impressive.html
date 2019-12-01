@@ -1,0 +1,17 @@
+.deck {
+  margin: 0;
+  background: #000;
+}
+
+.deck::before {
+  content: unset;
+}
+
+.deck section {
+  box-shadow: unset;
+}
+
+/* page number */
+.deck section::after {
+  content: attr(data-sheet);
+}
